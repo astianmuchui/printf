@@ -23,5 +23,5 @@ int _printf ( const char *format , ...  )
 
 int main( void )
 {
-    _printf ( "Hello, World!\n");
+    // _printf ( "%d",500 );
 }
