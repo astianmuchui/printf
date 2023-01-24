@@ -1,27 +1,44 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
+#include "main.h"
 
-
-    /*
-        @params: format, unlimited number of characters to be printed
-    */
-
-int _printf ( const char *format , ...  )
+int _printf(const char *format, ...)
 {
-    va_list args;
-    int i;
+	int i = 0, j = 0, chars_printed = 0, flag = 0;
+	va_list arg_ptr;
+	char_t opt[] = {{"c", print_c}, {"s", print_s}, {"d", print_d},
+			{"i", print_i}, {"b", print_b}, {"u", print_u},
+			{"o", print_o}, {"x", print_x}, {"X", print_X},
+			{"S", print_S}, {NULL, NULL}};
 
-    va_start ( args, format );
-    i = vprintf ( format , args );
+	va_start(arg_ptr, format);
 
-    va_end(args);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
-    return i;
-}
+	while (format != NULL && format[i] != '\0') 
+	{
+		if (format[i] == '%' && format[i + 1] == '%')
+			_putchar(format[i + 1]), i++, chars_printed++;
+		else if (format[i] == '%' && format[i + 1] != '%')
+		{
+			j = 0, flag = 0;
+			while (opt[j].code != NULL)
+			{
+				if (opt[j].code[0] == format[i + 1])
+				{
+					chars_printed += opt[j].print_func(arg_ptr), flag = 1, i++;
+					break;
+				}
+				j++;
+			}
 
+			if (!flag)
+				_putchar(format[i]), chars_printed++;
+		}
 
-int main( void )
-{
-    // _printf ( "%d",500 );
+		else
+			_putchar(format[i]), chars_printed++;
+		i++;
+	}
+	va_end(arg_ptr);
+	return (chars_printed);
 }
