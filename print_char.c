@@ -1,13 +1,20 @@
 #include "main.h"
 
 /**
- * print_c - prints a character
- * @args: args
- * Return: 1 which is 1 character printed
+ * print_char - prints a character to stdout
+ * @ping: variadic parameter
+ * Return: an integer
  */
 
-int print_c(va_list args)
+int print_char(va_list ping)
 {
-	_putchar(va_arg(args, int));
-	return (1);
+	char c = va_arg(ping, int);
+	int result = 0;
+
+	if (c)
+	{
+		result = write(1, &c, 1);
+		return (result);
+	}
+	return (0);
 }

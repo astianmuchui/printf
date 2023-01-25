@@ -2,19 +2,27 @@
 #define _MAIN_H_
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
+#include <stdio.h>
+
 
 int _printf(const char *format, ...);
-/**
- * struct char_func - contains code and print function
- * @code: character code
- * @print_func: the associated print function
- */
+int (*specifier_checker(const char*))(va_list);
 
-typedef struct char_func
+/**
+ * stuct spec - struct for specifiers to printer
+ * @o: character to compare
+ * @j: function to handle printing
+ */
+typedef struct spec
 {
-	char *code;
-	int (*print_func)(va_list);
-} char_t;
+	char *o;
+	int (*j)(va_list);
+}spec_o;
+
+int print_char(va_list);
+int print_string(va_list);
+int print_per(va_list);
 
 int _putchar(char c);
 int print_c(va_list args);
