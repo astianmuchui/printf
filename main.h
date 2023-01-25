@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+int _printf(const char *format, ...);
 /**
  * struct char_func - contains code and print function
  * @code: character code
