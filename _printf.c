@@ -1,52 +1,22 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include <unistd.h>
-#include "main.h"
-
-/**
- * _printf - produces output according to a format
- * @format: string to print
- *
- * Return: number of characters printed
- */
+#include <stdlib.h>
 
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0, result = 0;
-	va_list ping;
+    va_list args;
+    int done;
 
-	va_start(ping, format);
-	int (*j)(va_list);
+    va_start(args, format);
+    done = vfprintf(stdout, format, args);
+    va_end(args);
 
-	if (format == NULL)
-		return (-1);
+    return done;
+}
 
-	while (format[i])
-	{
-		if (format[i] != '%')
-			count = write(1, &format[i], 1);
-			result = result + count;
-			i++;
-			continue;
-		if (format[i] == '%')
-			j = specifier_checker(&format[i + 1]);
-			if (j != NULL)
-				count = j(ping);
-				result = result + count;
-				i = i + 2;
-				continue;
-			if (format[i + 1] == '\0')
-			{
-				break;
-			}
+int main(void)
+{
+    int n, i = 42;
 
-			if (format[i + 1] != '\0')
-			{
-				count = write(1, &format[i], 1);
-				result = result + count;
-				i = i + 2;
-				continue;
-			}
-	}
-	return (result);
+    _printf("%d",n);
 }
