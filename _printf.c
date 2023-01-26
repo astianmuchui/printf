@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include "main.h"
+
+
+int main()
+{
+int n, i = 42;
+_printf("%d", n);
+}
 
 int _printf(const char *format, ...)
 {
@@ -12,10 +20,4 @@ done = vfprintf(stdout, format, args);
 va_end(args);
 
 return done;
-}
-
-int main(void)
-{
-int n, i = 42;
-_printf("%d", n);
 }
