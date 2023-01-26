@@ -4,19 +4,18 @@
 
 int _printf(const char *format, ...)
 {
-    va_list args;
-    int done;
+va_list args;
+int done;
 
-    va_start(args, format);
-    done = vfprintf(stdout, format, args);
-    va_end(args);
+va_start(args, format);
+done = vfprintf(stdout, format, args);
+va_end(args);
 
-    return done;
+return done;
 }
 
 int main(void)
 {
-    int n, i = 42;
-
-    _printf("%d",n);
+int n, i = 42;
+_printf("%d", n);
 }
