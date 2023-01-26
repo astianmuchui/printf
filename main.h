@@ -18,7 +18,7 @@ typedef struct spec
 {
 	char *o;
 	int (*j)(va_list);
-}spec_o;
+} spec_o;
 
 int print_char(va_list);
 int print_string(va_list);
