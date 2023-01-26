@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include "main.h"
 
-
-int main()
-{
-int n, i = 42;
-_printf("%d", n);
-}
+ /*
+    * _printf - produces output according to a format
+    * @format: character string
+    * @params  format , number of arguments
+    * return: number of characters printed
+  */
 
 int _printf(const char *format, ...)
 {
@@ -21,3 +21,11 @@ va_end(args);
 
 return (done);
 }
+
+
+int main(void)
+{
+int n, i = 42;
+_printf("%d", n);
+}
+
