@@ -4,8 +4,8 @@
  * specifier_checker - checks the validity of a specifier and
  * assigns an appropriate function for its printing
  * @format: the specifier(char)
- *
- * Returns: a pointer to function
+ * Return: -1 if not successful,
+ * a pointer to a function if successful
  */
 
 int (*specifier_checker(const char *format))(va_list)
