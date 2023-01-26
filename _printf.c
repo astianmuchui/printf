@@ -19,5 +19,5 @@ va_start(args, format);
 done = vfprintf(stdout, format, args);
 va_end(args);
 
-return done;
+return (done);
 }
